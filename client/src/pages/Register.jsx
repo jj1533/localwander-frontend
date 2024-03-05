@@ -2,20 +2,18 @@ import { useState } from 'react';
 import axios from 'axios';
 import { useNavigate } from 'react-router-dom';
 
-export default function Login() {
+const Register = ({ history }) => {
     const [username, setUsername] = useState('');
     const [password, setPassword] = useState('');
     const navigate = useNavigate();
-
-    const handleLogin = async () => {
+    const handleRegister = async () => {
         try {
-            const response = await axios.post('http://localhost:3000/login', {
+            const response = await axios.post('http://localhost:3000/register', {
                 username,
                 password,
             });
-            if (response.data.message === 'Logged in') {
-                // Redirect to the app page upon successful login
-                navigate('/app');
+            if (response.data.message === 'Registered successfully') {
+                navigate('/login');
             }
         } catch (error) {
             console.error(error);
@@ -24,7 +22,7 @@ export default function Login() {
 
     return (
         <div>
-            <h2>Login</h2>
+            <h2>Register</h2>
             <input
                 type="text"
                 placeholder="Username"
@@ -37,7 +35,9 @@ export default function Login() {
                 value={password}
                 onChange={(e) => setPassword(e.target.value)}
             />
-            <button onClick={handleLogin}>Login</button>
+            <button onClick={handleRegister}>Register</button>
         </div>
     );
 };
+
+export default Register;
