@@ -99,6 +99,15 @@ app.post("/login", async (req, res) => {
     }
 });
 
+app.get("/auth/google",
+    passport.authenticate("google", { scope: ["profile"] }));
+
+app.get("/auth/google/secrets",
+    passport.authenticate("google", { failureRedirect: "/login" }),
+    function (req, res) {
+        res.json({ message: "Google authentication successful" });
+    });
+
 app.listen(port, () => {
     console.log(`Server is running on ${port}`)
 });

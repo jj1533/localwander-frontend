@@ -5,19 +5,19 @@ export default function Navbar() {
         <div>
             <div className="section">
                 <div className="left-section">
-                    <img className="logo" src="logoWithText.png" />
+                    <h1 className='font-bold text-[25px] pl-10'>LocalWanderer</h1>
                     <img className="toggle" src="bars-solid.svg" />
                 </div>
-                <div className="middle-section">
+                {/* <div className="middle-section gap-10">
                     <p className="nl">Home</p>
                     <p className="n1">Travel Guides</p>
                     <p className="nl">Hotels</p>
                     <p className="nl">Deals</p>
-                </div>
+                </div> */}
 
                 <div className="right-section">
-                    <Link to='login'><button className="button1">Log in</button></Link>
-                    <button className="button2">Sign Up</button>
+                    <Link to='login'><button className="button1 font-bold text-[18px]">Log in</button></Link>
+                    <Link to='register'><button className="button2 font-bold text-[18px]">Sign Up</button></Link>
                 </div>
             </div>
         </div>
