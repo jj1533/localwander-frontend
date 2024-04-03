@@ -1,0 +1,175 @@
+@import url('https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&family=Roboto:ital,wght@0,900;1,300&display=swap');
+
+
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+    font-family: 'Jost', sans-serif;
+}
+
+
+
+.bgvid {
+    width: 100%;
+    height: fit-content;
+    display: inline
+}
+
+.showcase {
+    position: absolute;
+    right: 0;
+    width: 100%;
+    min-height: 100vh;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    color: white;
+    background-color: rgb(48, 47, 47);
+    flex-direction: column;
+}
+
+.toggle {
+    width: 60px;
+    height: 60px;
+    background-image: url(hero_img/icons_img/bars.svg);
+    background-repeat: no-repeat;
+    background-size: 40px;
+    background-position: center;
+    cursor: pointer;
+}
+
+.showcase header {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    display: block;
+    z-index: 2;
+}
+
+.logo {
+    text-transform: uppercase;
+    cursor: pointer;
+}
+
+.showcase .bgvid {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    opacity: 0.9;
+}
+
+.text {
+    position: absolute;
+    top: 30%;
+    left: 50;
+    width: 100%;
+    padding: 0px 100px;
+    text-align: center;
+    align-items: center;
+    justify-content: center;
+    display: flex;
+    flex-direction: column;
+    line-height: 37px;
+    z-index: 10;
+
+}
+
+.text h3 {
+    font-size: 4em;
+    font-weight: 600;
+    line-height: 50px;
+
+}
+
+.text h4 {
+    margin: 20px 0;
+    font-size: 1.8em;
+    font-weight: 400;
+
+}
+
+.text p {
+    margin: 20px 0;
+    line-height: 29px;
+    font-size: 1.3em;
+    font-weight: 700;
+    max-width: 950px;
+
+}
+
+.text a {
+    text-decoration: none;
+    letter-spacing: 2px;
+    cursor: pointer;
+    padding: 6px 25px;
+    background-color: white;
+    color: black;
+    transition: 0.2s;
+    text-transform: uppercase;
+    font-size: 1em;
+
+}
+
+.text a:hover {
+    letter-spacing: 5px;
+}
+
+.overlay {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgb(0, 0, 0);
+    opacity: 0.4;
+}
+
+
+@media (max-width: 805px) {
+    .text {
+        text-align: center;
+        justify-content: center;
+        align-items: center
+    }
+
+
+    .text {
+        position: absolute;
+        top: 30%;
+        left: 50;
+        width: 100%;
+        padding: 10px 10px;
+        align-items: center;
+        justify-content: center;
+        display: flex;
+        flex-direction: column;
+        line-height: 37px;
+        z-index: 10;
+
+    }
+
+    .text a {
+        text-decoration: none;
+        letter-spacing: 2px;
+        cursor: pointer;
+        padding: 1px 10px;
+        background-color: white;
+        color: black;
+        transition: 0.2s;
+        text-transform: uppercase;
+        font-size: 1em;
+
+    }
+
+    .text a:hover {
+        letter-spacing: 4px;
+    }
+
+
+
+}
