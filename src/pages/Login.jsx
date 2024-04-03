@@ -20,6 +20,7 @@ export default function Login() {
             }
         } catch (error) {
             console.error(error);
+            alert("Invalid Password or Email")
         }
     };
 
@@ -36,20 +37,26 @@ export default function Login() {
                     </div>
                     <div className='flex flex-col gap-5'>
                         <div className='flex flex-col gap-5'>
-                            <input
-                                type="text"
-                                placeholder="Enter Username"
-                                value={username}
-                                onChange={(e) => setUsername(e.target.value)}
-                                className=' py-4 pl-5 pr-[10rem] rounded-xl bg-gray-100 text-[20px]'
-                            />
-                            <input
-                                type="password"
-                                placeholder="Password"
-                                value={password}
-                                onChange={(e) => setPassword(e.target.value)}
-                                className=' py-4 pl-5 pr-10 rounded-xl bg-gray-100 text-[20px]'
-                            />
+                            <div className='flex flex-col gap-2'>
+                                <label className='pl-1'>Email Address</label>
+                                <input
+                                    type="text"
+                                    placeholder="Enter Email"
+                                    value={username}
+                                    onChange={(e) => setUsername(e.target.value)}
+                                    className=' py-4 pl-5 pr-[10rem] rounded-xl bg-gray-100 text-[20px]'
+                                />
+                            </div>
+                            <div className='flex flex-col gap-2'>
+                                <label className='pl-1'>Password</label>
+                                <input
+                                    type="password"
+                                    placeholder="Password"
+                                    value={password}
+                                    onChange={(e) => setPassword(e.target.value)}
+                                    className=' py-4 pl-5 pr-10 rounded-xl bg-gray-100 text-[20px]'
+                                />
+                            </div>
                         </div>
                         <div className='flex flex-col items-center gap-3'>
                             <Link to='/register'><h1 className='underline underline-offset-4 font-semibold text-gray-500 hover:text-black'>Create a new Account ?</h1></Link>
