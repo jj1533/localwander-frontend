@@ -4,6 +4,7 @@ import HomePage from './pages/HomePage'
 import Login from './pages/Login'
 import Register from './pages/Register'
 import App from './pages/App'
+import TripCreate from './pages/TripCreate'
 import './index.css'
 import {
   createBrowserRouter,
@@ -25,6 +26,10 @@ const router = createBrowserRouter([
   {
     path: "/app",
     element: <App />
+  },
+  {
+    path: "/app/createTrip",
+    element: <TripCreate />
   }
 ]);
 

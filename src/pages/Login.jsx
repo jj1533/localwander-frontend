@@ -1,8 +1,9 @@
 import { useState } from 'react';
 import axios from 'axios';
 import { useNavigate } from 'react-router-dom';
-import loginBg from '../assets/images/login.png'
+import loginBg from '../assets/images/login.jpg'
 import { Link } from 'react-router-dom';
+const imageUrl = "../assets/images/login.png"
 export default function Login() {
     const [username, setUsername] = useState('');
     const [password, setPassword] = useState('');
@@ -10,11 +11,11 @@ export default function Login() {
 
     const handleLogin = async () => {
         try {
-            const response = await axios.post('http://localhost:3000/login', {
+            const response = await axios.post('http://localhost:3000/auth/login', {
                 username,
                 password,
             });
-            if (response.data.message === 'Logged in') {
+            if (response.data.message === 'Login successful') {
                 // Redirect to the app page upon successful login
                 navigate('/app');
             }
@@ -25,11 +26,11 @@ export default function Login() {
     };
 
     return (
-        <div className='flex'>
-            <div >
-                <img className='h-[100vh] w-[80vw]' src={loginBg} />
-            </div>
-            <div className='flex justify-center items-center w-full'>
+        <div className='flex items-center h-[100vh] bg-white'>
+            <img src = {loginBg}
+        className="h-[80vh] inset-0 bg-cover bg-center ml-[15rem]"
+        />
+            <div className='flex justify-center items-center w-[50%] bg-white'>
                 <div className='flex flex-col items-center gap-[3rem]'>
                     <div className='flex flex-col gap-2 items-center'>
                         <h2 className='text-[35px] font-semibold border-b-2 border-blue-500 px-5'>Login</h2>

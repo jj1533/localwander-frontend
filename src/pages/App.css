@@ -1,0 +1,201 @@
+* {
+    margin: 0;
+    padding: 0;
+}
+
+.top-main {
+    display: flex;
+    flex-direction: row;
+}
+
+.box-image {
+    height: 100px;
+    width: 250px;
+}
+
+.logo-image {
+    margin-left: 30px;
+    margin-top: 20px;
+}
+
+.navbar-box {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    margin-top: 20px;
+    margin-left: 698px;
+    margin-right: 10px;
+    /* background-color: bisque; */
+    width: 58%;
+    align-items: center;
+
+}
+
+.n1 {
+    padding: 20px 20px 20px 20px;
+    font-size: 19px;
+    font-family: 'Poppins';
+    background-color: rgb(152, 213, 228);
+}
+
+.middle-section {
+    display: flex;
+}
+
+.first-section {
+    border: 2px;
+    border-radius: 25px;
+    margin-left: 20px;
+    width: 280px;
+    background-color: rgb(138, 196, 196);
+    font-size: 16px;
+    font-family: 'Poppins';
+    font-weight: bold;
+    height: fit-content;
+    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(43, 40, 40, 0.19);
+
+}
+
+.user-image {
+    margin-top: 50px;
+    margin-bottom: 4px;
+    margin-left: 60px;
+    background-color: rgb(138, 196, 196);
+}
+
+.user-details {
+    background-color: rgb(138, 196, 196);
+}
+
+.ud {
+    margin: 20px 40px 40px 40px;
+    background-color: rgb(138, 196, 196);
+}
+
+.ud1 {
+    margin: 40px 40px 40px 40px;
+    padding-bottom: 30px;
+    background-color: rgb(138, 196, 196);
+}
+
+.second-section {
+    flex-direction: row;
+}
+
+.map-section,
+.your-trip,
+.your-guides {
+    padding: 20px 20px 20px 20px;
+    border-style: dashed;
+    border: 1.5px solid black;
+    border-radius: 25px;
+    border-color: rgb(237, 16, 16);
+    margin-bottom: 20px;
+    /* width: 300px; */
+}
+
+.t1 {
+    font-weight: bold;
+    font-family: 'Poppins';
+}
+
+.t2 {
+    font-size: 14px;
+    font-family: 'Poppins';
+}
+
+.new-trip,
+.new-guide {
+    margin-top: 10px;
+    margin-bottom: 10px;
+    text-align: center;
+}
+
+.b1 {
+    border-radius: 8px;
+    border: none;
+    background-color: rgb(193, 220, 211);
+    padding: 10px 10px;
+    font-weight: bold;
+    font-size: 13px;
+    font-family: 'Poppins';
+    cursor: pointer;
+
+}
+
+.explore-section {
+    display: flex;
+    flex-direction: row;
+}
+
+.explore2 {
+    margin: 50px 30px 30px 70px;
+    padding: 10px 10px 10px 10px;
+    font-size: 25px;
+    font-weight: bold;
+    font-family: 'Poppins';
+}
+
+.explore-image {
+    margin-top: 50px;
+}
+
+.ii {
+    margin-left: 120px;
+    margin-right: 100px;
+    border-radius: 8px;
+}
+
+.caption {
+    display: flex;
+    flex-direction: row;
+    width: 100%;
+}
+
+.c1 {
+    /* flex-direction: row; */
+    font-size: 19px;
+    margin-left: 120px;
+    margin-right: 100px;
+    width: fit-content;
+}
+
+.c2 {
+    font-size: 19px;
+    margin-left: 120px;
+    margin-right: 160px;
+    width: fit-content;
+}
+
+.c3 {
+    font-size: 19px;
+    margin-left: 120px;
+    width: fit-content;
+}
+
+.last-section {
+    display: flex;
+    flex-direction: row;
+    margin-top: 60px;
+    margin-bottom: 40px;
+    border-radius: 6px;
+    border: none;
+    margin-left: 120px;
+    font-size: 20px;
+    font-family: 'Poppins';
+    background-color: rgb(195, 174, 227);
+    width: fit-content;
+    padding: 20px 20px 20px 20px;
+    font-weight: bold;
+}
+
+.find {
+    margin-left: 70px;
+    margin-right: 50px;
+}
+
+@media (max-width: 600px) {
+    .top-main {
+        flex-direction: column;
+    }
+}
