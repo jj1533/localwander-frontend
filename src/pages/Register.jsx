@@ -2,13 +2,14 @@ import { useState, useEffect } from 'react';
 import axios from 'axios';
 import { Link, useNavigate } from 'react-router-dom';
 import signupBg from '../assets/images/signup.jpg'
+import axiosInstance from './axiosConfig';
 const Register = () => {
     const [email, setEmail] = useState('');
     const [password, setPassword] = useState('');
     const navigate = useNavigate();
     const handleRegister = async () => {
         try {
-            const response = await axios.post('http://localhost:3000/auth/register', {
+            const response = await axiosInstance.post('http://localhost:3000/auth/register', {
                 email,
                 password,
             });

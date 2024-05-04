@@ -8,12 +8,13 @@ import user from '../assets/images/user.jpg'
 import redfort from '../assets/images/redfort.jpg'
 import backwater from '../assets/images/backwater.jpg'
 import axios from 'axios';
+import axiosInstance from './axiosConfig';
 const App = () => {
     const navigate = useNavigate();
     const [trips, setTrips] = useState([]);
     const handleLogout = async () => {
         try {
-            const response = await axios.get('http://localhost:3000/auth/logout');
+            const response = await axiosInstance.get('http://localhost:3000/auth/logout');
 
             if (response.status === 200) {
                 navigate('/home'); // Redirect to the home page after successful logout

@@ -3,7 +3,8 @@ import axios from 'axios';
 import { useNavigate } from 'react-router-dom';
 import loginBg from '../assets/images/login.jpg'
 import { Link } from 'react-router-dom';
-const imageUrl = "../assets/images/login.png"
+import axiosInstance from './axiosConfig';
+const imageUrl = "../assets/images/login.png";
 export default function Login() {
     const [username, setUsername] = useState('');
     const [password, setPassword] = useState('');
@@ -11,7 +12,7 @@ export default function Login() {
 
     const handleLogin = async () => {
         try {
-            const response = await axios.post('http://localhost:3000/auth/login', {
+            const response = await axiosInstance.post('http://localhost:3000/auth/login', {
                 username,
                 password,
             });
