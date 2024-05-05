@@ -8,6 +8,7 @@ import redfort from "../assets/images/redfort.jpg";
 import backwater from "../assets/images/backwater.jpg";
 import axios from "axios";
 import axiosInstance from "./axiosConfig";
+import { ImCross } from "react-icons/im";
 const App = () => {
   const navigate = useNavigate();
   const [trips, setTrips] = useState([]);
@@ -18,7 +19,7 @@ const App = () => {
       );
 
       if (response.status === 200) {
-        navigate("/home"); // Redirect to the home page after successful logout
+        navigate("/"); // Redirect to the home page after successful logout
       } else {
         alert("Logout failed"); // Handle other response statuses (e.g., 401)
       }
@@ -38,14 +39,44 @@ const App = () => {
           setTrips(response.data);
         }
       } catch (error) {
-        console.error("Error fetching trips:", error);
+        if (error.response && error.response.status === 401) {
+          // Unauthorized, navigate to login page
+          navigate("/login");
+        } else {
+          console.error("Error fetching trips:", error);
+        }
       }
     };
+
     fetchTrips();
   }, []);
 
   const handleNewTripClick = () => {
     navigate("createTrip"); // Navigate to the '/createTrip' route
+  };
+
+  const handleDeleteTrip = async (tripId) => {
+    const confirmDelete = window.confirm(
+      "Are you sure you want to delete this trip?"
+    );
+    if (confirmDelete) {
+      try {
+        const response = await axiosInstance.delete(
+          `http://localhost:3000/trips/delete/${tripId}`
+        );
+
+        if (response.status === 200) {
+          // Remove the deleted trip from the trips state
+          const updatedTrips = trips.filter((trip) => trip._id !== tripId);
+          setTrips(updatedTrips);
+        } else {
+          alert("Failed to delete trip");
+        }
+      } catch (error) {
+        console.error("Error deleting trip:", error);
+        alert("Failed to delete trip");
+      }
+    }
   };
   return (
     <div>
@@ -69,17 +100,26 @@ const App = () => {
           <p className="text-[3rem] font-semibold underline underline-offset-4">
             Your Trips ✈️
           </p>
-          <div className="flex flex-col">
+          <div className="flex flex-row flex-wrap gap-[2rem] py-10">
             {trips.map((trip) => (
-              <div>
-                <p>{trip.key}</p>
-                <p className="text-[2rem]">{trip.title}</p>
+              <div className="flex flex-row px-[3rem] py-[3rem] border border-black gap-10 rounded-xl">
+                <div className="flex flex-col">
+                  <p className="text-[2rem] font-semibold">{trip.title}</p>
+                  <p className="text-[1.5rem]">Duration:{trip.duration} Days</p>
+                </div>
+                <ImCross
+                  className="cursor-pointer"
+                  onClick={() => handleDeleteTrip(trip._id)}
+                />
               </div>
             ))}
           </div>
 
-          <button className="b1" onClick={handleNewTripClick}>
-            +new trip
+          <button
+            className="bg-green-300 text-[1.5rem] font-bold py-[1rem] px-[2rem] rounded-xl hover:bg-green-500"
+            onClick={handleNewTripClick}
+          >
+            + New Trip
           </button>
         </div>
       </div>

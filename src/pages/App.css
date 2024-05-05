@@ -20,17 +20,6 @@
   align-items: center;
 }
 
-.b1 {
-  border-radius: 8px;
-  border: none;
-  background-color: rgb(193, 220, 211);
-  padding: 10px 10px;
-  font-weight: bold;
-  font-size: 13px;
-  font-family: "Poppins";
-  cursor: pointer;
-}
-
 .explore-section {
   display: flex;
   flex-direction: row;
