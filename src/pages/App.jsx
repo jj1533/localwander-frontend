@@ -104,7 +104,9 @@ const App = () => {
             {trips.map((trip) => (
               <div className="flex flex-row px-[3rem] py-[3rem] border border-black gap-10 rounded-xl">
                 <div className="flex flex-col">
-                  <p className="text-[2rem] font-semibold">{trip.title}</p>
+                  <p className="text-[2rem] font-semibold hover:underline underline-offset-8 cursor-pointer">
+                    {trip.title}
+                  </p>
                   <p className="text-[1.5rem]">Duration:{trip.duration} Days</p>
                 </div>
                 <ImCross

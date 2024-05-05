@@ -9,7 +9,8 @@
   font-style: normal;
 }
 
-h1 {
+h1,
+input {
   font-family: "Patrick Hand", cursive;
   font-style: normal;
 }

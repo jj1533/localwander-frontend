@@ -1,6 +1,5 @@
 import { useState } from "react";
 import axios from "axios";
-import "./TripCreate.css";
 import { useNavigate } from "react-router-dom";
 const CreateTrip = () => {
   const [title, setTitle] = useState("");
@@ -42,67 +41,78 @@ const CreateTrip = () => {
     } catch (error) {
       // Handle error
       console.error("Error creating trip:", error);
-      setError("Failed to create trip. Please try again.");
+      if (error.response && error.response.status === 400) {
+        // If 400 error, display overlapping trip details in the error message
+        const overlappingTrips = error.response.data.overlappingTrips;
+        const overlappingDetails = overlappingTrips
+          .map((trip) => `${trip.title}`)
+          .join("\n");
+        setError(
+          `This trip is overlapping with other trips:\n${overlappingDetails}`
+        );
+      } else {
+        setError("Failed to create trip. Please try again.");
+      }
     }
 
     setLoading(false);
   };
 
   return (
-    <div className="container flex justify-center">
-      <form onSubmit={handleSubmit}>
-        <h2 className="text-[20px] underline underline-offset-8 pb-5">
-          Create a New Trip
-        </h2>
-        <div className="form-group">
-          <label>Trip Name:</label>
+    <div className="w-[100vw] flex flex-col p-[2rem]">
+      <h2 className="text-[3rem] underline underline-offset-8 pb-5">
+        New Trip
+      </h2>
+      <form onSubmit={handleSubmit} className="flex flex-col items-center">
+        <div className="flex gap-5 justify-center items-center">
+          <label className="text-[2rem]">Trip Name:</label>
           <input
             type="text"
             value={title}
             onChange={(e) => setTitle(e.target.value)}
             required
+            className="text-[2rem] font-bold bg-gray-200 p-[1rem] rounded-xl"
           />
         </div>
+        <div className="flex flex-col items-center pt-10">
+          {" "}
+          <label className="p-[2rem] text-[1.5rem]">
+            Start Date :
+            <input
+              type="date"
+              value={startDate}
+              onChange={(e) => setStartDate(e.target.value)}
+              required
+              className="text-[2rem] pl-5"
+            />
+          </label>
+          <label className="p-[2rem] text-[1.5rem]">
+            End Date :
+            <input
+              type="date"
+              value={endDate}
+              onChange={(e) => setEndDate(e.target.value)}
+              required
+              className="text-[2rem] pl-5"
+            />
+          </label>
+        </div>
 
-        <br />
-        <label>
-          Location:
-          <input
-            type="text"
-            value={location}
-            onChange={(e) => setLocation(e.target.value)}
-            required
-          />
-        </label>
-        <br />
-        <label>
-          Start Date:
-          <input
-            type="date"
-            value={startDate}
-            onChange={(e) => setStartDate(e.target.value)}
-            required
-          />
-        </label>
-        <br />
-        <label>
-          End Date:
-          <input
-            type="date"
-            value={endDate}
-            onChange={(e) => setEndDate(e.target.value)}
-            required
-          />
-        </label>
-        <br />
         <button
-          className="bg-green-400 p-5 rounded-lg"
+          className="bg-green-400 py-5 px-2 rounded-lg w-[30%] text-[1.5rem] font-bold hover:bg-green-500"
           type="submit"
           disabled={loading}
         >
           Create Trip
         </button>
-        {error && <p style={{ color: "red" }}>{error}</p>}
+        {error && (
+          <p
+            style={{ color: "red" }}
+            className="pt-5 text-[1.5rem] font-medium"
+          >
+            {error}
+          </p>
+        )}
       </form>
     </div>
   );
