@@ -44,7 +44,17 @@ const TripInterface = () => {
       // After successful update, navigate back to trips page or do any other action
       navigate("/app");
     } catch (error) {
-      console.error("Error updating trip:", error);
+      console.error("Error creating trip:", error);
+      if (error.response && error.response.status === 400) {
+        // If 400 error, display overlapping trip details in the error message
+        const overlappingTrips = error.response.data.overlappingTrips;
+        const overlappingDetails = overlappingTrips
+          .map((trip) => `${trip.title}`)
+          .join("\n");
+        alert(`This trip is overlapping with \n${overlappingDetails}`);
+      } else {
+        alert("Failed to create trip. Please try again.");
+      }
     }
   };
 
