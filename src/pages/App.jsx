@@ -1,4 +1,4 @@
-import { useNavigate } from "react-router-dom";
+import { useNavigate, Link } from "react-router-dom";
 import { useEffect, useState } from "react";
 import "./App.css";
 import logo from "../assets/images/logo.jpg";
@@ -104,10 +104,32 @@ const App = () => {
             {trips.map((trip) => (
               <div className="flex flex-row px-[3rem] py-[3rem] border border-black gap-10 rounded-xl">
                 <div className="flex flex-col">
-                  <p className="text-[2rem] font-semibold hover:underline underline-offset-8 cursor-pointer">
+                  <Link
+                    to={`/trip/${trip._id}`} // Navigate to the trip details page
+                    className="text-[2.5rem] font-semibold hover:underline underline-offset-8 cursor-pointer"
+                  >
                     {trip.title}
+                  </Link>
+                  <p className="text-[1.2rem]">
+                    From:{" "}
+                    {new Date(trip.startDate).toLocaleDateString("en-US", {
+                      day: "numeric",
+                      month: "long",
+                    })}
                   </p>
-                  <p className="text-[1.5rem]">Duration:{trip.duration} Days</p>
+                  <p className="text-[1.2rem]">
+                    To:{" "}
+                    {new Date(trip.endDate).toLocaleDateString("en-US", {
+                      day: "numeric",
+                      month: "long",
+                    })}
+                  </p>
+                  <p className="text-[1.5rem]">
+                    Duration:
+                    <p className="font-bold text-[1.2rem] pl-2 pr-2">
+                      {trip.duration} Days{" "}
+                    </p>
+                  </p>
                 </div>
                 <ImCross
                   className="cursor-pointer"
@@ -118,7 +140,7 @@ const App = () => {
           </div>
 
           <button
-            className="bg-green-300 text-[1.5rem] font-bold py-[1rem] px-[2rem] rounded-xl hover:bg-green-500"
+            className="bg-green-400 text-[1.5rem] font-bold py-[1rem] px-[2rem] rounded-xl hover:bg-green-500"
             onClick={handleNewTripClick}
           >
             + New Trip

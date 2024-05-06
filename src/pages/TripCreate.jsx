@@ -1,6 +1,7 @@
 import { useState } from "react";
 import axios from "axios";
 import { useNavigate } from "react-router-dom";
+import { LuBaggageClaim } from "react-icons/lu";
 const CreateTrip = () => {
   const [title, setTitle] = useState("");
   const [location, setLocation] = useState("");
@@ -47,9 +48,7 @@ const CreateTrip = () => {
         const overlappingDetails = overlappingTrips
           .map((trip) => `${trip.title}`)
           .join("\n");
-        setError(
-          `This trip is overlapping with other trips:\n${overlappingDetails}`
-        );
+        setError(`This trip is overlapping with \n${overlappingDetails}`);
       } else {
         setError("Failed to create trip. Please try again.");
       }
@@ -60,12 +59,12 @@ const CreateTrip = () => {
 
   return (
     <div className="w-[100vw] flex flex-col p-[2rem]">
-      <h2 className="text-[3rem] underline underline-offset-8 pb-5">
-        New Trip
+      <h2 className="text-[3rem] underline underline-offset-8 pb-5 flex items-center gap-2">
+        New Trip <LuBaggageClaim />
       </h2>
       <form onSubmit={handleSubmit} className="flex flex-col items-center">
         <div className="flex gap-5 justify-center items-center">
-          <label className="text-[2rem]">Trip Name:</label>
+          <label className="text-[2rem]">Trip Name :</label>
           <input
             type="text"
             value={title}
@@ -99,7 +98,7 @@ const CreateTrip = () => {
         </div>
 
         <button
-          className="bg-green-400 py-5 px-2 rounded-lg w-[30%] text-[1.5rem] font-bold hover:bg-green-500"
+          className="bg-green-400 mt-10 py-5 px-2 rounded-lg w-[30%] text-[1.5rem] font-bold hover:bg-green-500"
           type="submit"
           disabled={loading}
         >
