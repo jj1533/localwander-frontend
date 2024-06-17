@@ -1,10 +1,10 @@
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import axios from "axios";
 import { useNavigate } from "react-router-dom";
 import loginBg from "../assets/images/login.jpg";
 import { Link } from "react-router-dom";
 import axiosInstance from "./axiosConfig";
-const imageUrl = "../assets/images/login.png";
+
 export default function Login() {
   const [username, setUsername] = useState("");
   const [password, setPassword] = useState("");
@@ -28,6 +28,21 @@ export default function Login() {
       alert("Invalid Password or Email");
     }
   };
+
+  // Add useEffect to handle "Enter" key press
+  useEffect(() => {
+    const handleKeyPress = (event) => {
+      if (event.key === 'Enter') {
+        handleLogin();
+      }
+    };
+
+    document.addEventListener('keypress', handleKeyPress);
+
+    return () => {
+      document.removeEventListener('keypress', handleKeyPress);
+    };
+  }, [username, password]);
 
   return (
     <div className="flex items-center h-[100vh] bg-white">
